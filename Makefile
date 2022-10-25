@@ -5,7 +5,7 @@
 
 VERSION := 1.7.2
 ARCH    := $(shell ./config.guess)
-PYMAJOR := $(shell python -c "import sys;t='{v[0]}'.format(v=list(sys.version_info[:1]));sys.stdout.write(t)")
+PYMAJOR := $(shell python3 -c "import sys;t='{v[0]}'.format(v=list(sys.version_info[:1]));sys.stdout.write(t)")
 
 # Check Python version_info
 
@@ -41,8 +41,8 @@ borgmatic-${VERSION}/dist/validate-borgmatic-config: specs/validate-borgmatic-co
 # Targets - preparations
 
 borgmatic-${VERSION}:
-	pip install borgmatic==${VERSION}
-	pip download --no-deps --no-binary :all: borgmatic==${VERSION}
+	pip3 install borgmatic==${VERSION}
+	pip3 download --no-deps --no-binary :all: borgmatic==${VERSION}
 	tar -xf borgmatic-${VERSION}.tar.gz
 
 # Targets - distribution
